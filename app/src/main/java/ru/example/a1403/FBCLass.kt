@@ -7,7 +7,8 @@ class FBCLass:FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         if(message.notification != null){
-            //message.notification.title
+            NotificationUtil.CreateNotificationChannel(context = this)
+            NotificationUtil.notifyNotification(this, message.notification!!.title.toString(), message.notification!!.body.toString())
         }
     }
 }
